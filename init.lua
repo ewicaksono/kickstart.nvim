@@ -875,7 +875,7 @@ require('lazy').setup({
       signature = { enabled = true },
     },
   },
-
+  --[[
   { -- You can easily change to a different colorscheme.
     -- Change the name of the colorscheme plugin below, and then
     -- change the command in the config to whatever the name of that colorscheme is.
@@ -898,6 +898,28 @@ require('lazy').setup({
     end,
   },
 
+  {
+    'ellisonleao/gruvbox.nvim',
+    priority = 1000,
+    config = true,
+    opts = function()
+      ---@diagnostic disable-next-line: missing-fields
+      require('gruvbox').setup {
+        inverse = false,
+      }
+      vim.o.background = 'dark'
+      vim.cmd.colorscheme 'gruvbox'
+    end,
+  },
+  ]]
+  {
+    'RRethy/base16-nvim',
+    priority = 1000,
+    config = function()
+      vim.o.termguicolors = true
+      vim.cmd.colorscheme 'base16-gruvbox-dark-hard'
+    end,
+  },
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
